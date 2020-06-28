@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class CombatManager : MonoBehaviour
 {
     public static CombatManager instance;
     public GameObject enemy;
+    public GameObject player;
 
     private void Awake()
     {
@@ -17,8 +19,7 @@ public class CombatManager : MonoBehaviour
     {
         if (enemy != null)
         {
-            UIManager.instance.enemyName.text = enemy.GetComponent<Enemy>().enemyName;
-            UIManager.instance.enemyImage = enemy.GetComponent<Enemy>().enemyImage; 
+            UIManager.instance.SetStatus();
       
         }
     }
