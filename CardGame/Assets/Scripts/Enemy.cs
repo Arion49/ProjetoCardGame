@@ -10,31 +10,26 @@ public class Enemy : MonoBehaviour
     public int enemyMaxLife;
 
     public int enemyCurrentLife;
-    public int EnemyCurrentLife
-    {
-        get
-        {
-            return enemyCurrentLife;
-        }
-        set
-        {
-            enemyCurrentLife = value;
-            if (enemyCurrentLife <= 0)
-            {
-                Destroy(gameObject);
-                enemyCurrentLife = 0;
-                UIManager.instance.UpdateLife();
 
-            }
-        }
-    }
 
     public int enemyDamage;
 
     public Image enemyImage;
 
-    public void TakeDamage(int damage)
+    public bool TakeDamage(int damage)
     {
-        EnemyCurrentLife -= damage;
+        enemyCurrentLife -= damage;
+        if (enemyCurrentLife <= 0)
+        {
+            return true;
+        }
+           
+        return false;
     }
+
+    public void RestoreHealth()
+    {
+        enemyCurrentLife = enemyMaxLife;
+    }
+ 
 }
